@@ -15,7 +15,11 @@ export default function App() {
         <Suspense fallback={<h1>Loading Posts...</h1>}>
           <PostSelector onSelectPost={handleSelectPost} />
         </Suspense>
-        {selectedPostId && <Comments postId={selectedPostId} />}
+        {selectedPostId && (
+          <Suspense fallback={<h1>Loading Comments...</h1>}>
+            <Comments postId={selectedPostId} />
+          </Suspense>
+        )}
       </div>
     </>
   );
